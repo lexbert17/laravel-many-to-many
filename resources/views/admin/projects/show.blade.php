@@ -7,6 +7,12 @@
             Data: {{ $project->created_at }}
         </div>
 
+        <div>
+            @foreach ($project->technologies as $technology)
+                <span>{{$technology->name}}</span>
+            @endforeach
+        </div>
+
         <div class="mt-4">
             Slug: {{ $project->slug }}
         </div>
