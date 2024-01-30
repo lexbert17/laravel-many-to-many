@@ -30,6 +30,18 @@
                     @endforeach
                   </select>
                 </div> 
+
+                <div class="mb-3">
+                  @foreach ($technologies as $technology)
+                      <div class="form_check">
+                        <input @checked($errors->any() ? in_array($technology->id,old('technology',[])) : $project->technologies->contains($technology)) type="checkbox" id="technology-{{$technology->id}}" value="{{$technology->id}}" name="technologies[]"> 
+                        <label for="technology-{{$technology->id}}">{{$technology->name}}</label>
+                      </div>
+                  @endforeach
+                  @error('technologies')
+                    <div class="invalid-feedback">{{$message}}</div>
+                @enderror
+                </div>  
             
             <button class="btn btn-success" type="submit">Salva</button>
 
