@@ -31,9 +31,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        $types = Type::all();
         $technologies = Technology::all();
-        return view('admin.projects.create', compact('types', 'technologies'));
+        $types = Type::all(); 
+        return view('admin.projects.create', compact('types','technologies'));
     }
 
     /**
@@ -49,6 +49,8 @@ class ProjectController extends Controller
         $project = new Project();
         $project->fill($form_data);
         $project->save();
+
+        
 
         return redirect()->route ('admin.projects.show', ['project'=> $project->slug]);
     }

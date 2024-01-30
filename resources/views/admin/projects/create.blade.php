@@ -37,20 +37,15 @@
               </select>
             </div> 
 
-            <div>
-            @foreach ($technologies as $technology)
-            <div class="form-check">
-                <input @checked(in_array($technology->id, old('technologies', []))) type="checkbox" id="technology-{{ $technology->id }}" value="{{ $technology->id }}" name="techologies[]">
-                <label for="technology-{{ $technology->id }}">
-                    {{ $technology->name }}
-                </label>
+            <div class="mb-3">
+                <h5>seleziona la tecnologia utilizzata</h5>
+                @foreach ($technologies as $technology)
+                    <div class="form-check">
+                        <input @checked(in_array($technology->id, old('technologies', []))) type="checkbox" id="technology-{$technology->id}" value="{$technology->id}" name="technologies[]" >
+                        <label for="technology-{$technology->id}">{{$technology->name}}</label>
+                    </div>
+                @endforeach
             </div>
-            @endforeach
-
-            @error('technologies')
-            <div class="text-danger">{{ $message }}</div>
-        @enderror
-        </div>
             
             <button class="btn btn-success" type="submit">Salva</button>
 
