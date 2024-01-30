@@ -11,7 +11,7 @@ class Project extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $fillable = ['title', ' content', 'slug', 'type_id'];
+    protected $fillable = ['title', 'content', 'slug', 'type_id'];
 
     public function setTitleAttribute ($_title){
         $this->attributes['title'] = $_title;

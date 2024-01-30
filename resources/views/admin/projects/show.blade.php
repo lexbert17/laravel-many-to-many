@@ -7,12 +7,15 @@
             Data: {{ $project->created_at }}
         </div>
 
+        <div class="mt-4">
+            Content: {{ $project->content }}
+        </div>
+
         @if (count($project->technologies) > 0)
         <div> <span>Tecnologia :<span>
             @foreach ($project->technologies as $technology)
                 <span>{{$technology->name}}</span>
-            @endforeach
-            
+            @endforeach   
         </div>
         @else
             <p>nessuna tecnologia</p>
@@ -23,12 +26,11 @@
             Slug: {{ $project->slug }}
         </div>
 
-        {{-- <div class="mt-4">
-            Tipo: {{ $project->type->name }}
-        </div> --}}
+        
+        <div>
+            tipo: {{ $project->type ? $project->type->name : 'Nessuna tipo' }}
+        </div>
 
-        <p class="mt-4">
-            {{ $project->content }}
-        </p>
+        
     </div>
 @endsection
